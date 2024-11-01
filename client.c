@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:30:25 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/01 13:26:09 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/01 19:22:05 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,21 @@ int	main(int argc, char **argv)
 {
 	pid_t	server_pid;
 	char	*message;
-	size_t	temp;
+	size_t	i;
 
-	temp = -1;
-	message = NULL;
 	if (argc != 3)
 	{
 		write(1, "Usage: ./client <server_pid> <string>\n", 38);
 		return (1);
 	}
 	server_pid = ft_atoi(argv[1]);
-	*message = *argv[2];
-	while (++temp < ft_strlen(message))
-		send_character(message[temp], server_pid);
+	message = argv[2];
+	i = 0;
+	while (i < ft_strlen(message))
+	{
+		send_character(message[i], server_pid);
+		i++;
+	}
+	send_character('\0', server_pid);
 	return (0);
 }

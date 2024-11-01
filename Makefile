@@ -17,6 +17,9 @@ SERVER_SRCS = server.c
 CLIENT_OBJS = $(CLIENT_SRCS:.c=.o)
 SERVER_OBJS = $(SERVER_SRCS:.c=.o)
 
+# Default rule to compile both client and server
+all: $(CLIENT) $(SERVER)
+
 # Rule to compile libft
 $(LIBFT):
 	cd $(LIBFT_DIR) && make
@@ -34,9 +37,6 @@ $(CLIENT): $(CLIENT_OBJS) $(LIBFT) $(LIBFTPRINTF)
 $(SERVER): $(SERVER_OBJS) $(LIBFT) $(LIBFTPRINTF)
 	$(CC) $(CFLAGS) -o $(SERVER) $(SERVER_OBJS) $(LIBFT) $(LIBFTPRINTF)
 	@echo "Server compiled."
-
-# Default rule to compile both client and server
-all: $(CLIENT) $(SERVER)
 
 # Clean object files and libraries
 clean:

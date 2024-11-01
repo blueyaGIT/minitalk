@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 10:53:19 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/01 13:27:18 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/01 19:17:51 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,27 @@
 
 #define BUFFER_SIZE 1024
 
-char	g_buffer[BUFFER_SIZE];
-int		g_index = 0;
-
 void	handle_signal(int sig)
 {
+	static int		bit_count = 0;
+	static char		character = 0;
+
+	character <<= 1;
 	if (sig == SIGUSR1)
+		character |= 1;
+	bit_count++;
+	if (bit_count == 8)
 	{
-		g_buffer[g_index++] = '1';
-	}
-	else if (sig == SIGUSR2)
-	{
-		g_buffer[g_index++] = '0';
-	}
-	if (g_index > 0 && (sig == SIGUSR2))
-	{
-		g_buffer[g_index] = '\0';
-		ft_printf("Received: %s\n", g_buffer);
-		g_index = 0;
+		if (character == '\0')
+		{
+			write(1, "\n", 1);
+		}
+		else
+		{
+			write(1, &character, 1);
+		}
+		character = 0;
+		bit_count = 0;
 	}
 }
 
