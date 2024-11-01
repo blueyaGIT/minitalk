@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 10:53:19 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/01 11:58:29 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/01 12:07:29 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,24 @@ void	handle_signal(int sig)
 {
 	if (sig == SIGUSR1)
 	{
-		buffer[g_index++] = '1'; // Arbitrarily assign '1' for SIGUSR1
+		g_buffer[g_index++] = '1'; // Arbitrarily assign '1' for SIGUSR1
 	}
 	else if (sig == SIGUSR2)
 	{
-		buffer[g_index++] = '0'; // Arbitrarily assign '0' for SIGUSR2
+		g_buffer[g_index++] = '0'; // Arbitrarily assign '0' for SIGUSR2
 	}
-	// When receiving the end of string signal (e.g., a specific signal), print the buffer
+	// When receiving the end of string signal (e.g., a specific signal), print the g_buffer
 	if (g_index > 0 && (sig == SIGUSR2))
 	{
 		// Using SIGUSR2 as an indication of end of message
-		buffer[g_index] = '\0'; // Null-terminate the string
-		printf("Received: %s\n", buffer);
+		g_buffer[g_index] = '\0'; // Null-terminate the string
+		printf("Received: %s\n", g_buffer);
 		// Reset for next message
 		g_index = 0;
 	}
 }
 
-int main()
+int	main(void)
 {
 	pid_t				pid;
 	struct sigaction	sa;
