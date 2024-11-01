@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 10:53:19 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/01 12:07:29 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/01 13:27:18 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,16 @@ void	handle_signal(int sig)
 {
 	if (sig == SIGUSR1)
 	{
-		g_buffer[g_index++] = '1'; // Arbitrarily assign '1' for SIGUSR1
+		g_buffer[g_index++] = '1';
 	}
 	else if (sig == SIGUSR2)
 	{
-		g_buffer[g_index++] = '0'; // Arbitrarily assign '0' for SIGUSR2
+		g_buffer[g_index++] = '0';
 	}
-	// When receiving the end of string signal (e.g., a specific signal), print the g_buffer
 	if (g_index > 0 && (sig == SIGUSR2))
 	{
-		// Using SIGUSR2 as an indication of end of message
-		g_buffer[g_index] = '\0'; // Null-terminate the string
-		printf("Received: %s\n", g_buffer);
-		// Reset for next message
+		g_buffer[g_index] = '\0';
+		ft_printf("Received: %s\n", g_buffer);
 		g_index = 0;
 	}
 }
@@ -46,15 +43,13 @@ int	main(void)
 	struct sigaction	sa;
 
 	pid = getpid();
-	printf("Server PID: %d\n", pid);
-	// Set up signal handlers
+	ft_printf("Server PID: %d\n", pid);
 	sa.sa_handler = handle_signal;
 	sa.sa_flags = 0;
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
-	// Keep the server running
 	while (1)
-		pause(); // Wait for signals
+		pause();
 	return (0);
 }

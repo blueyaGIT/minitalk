@@ -6,13 +6,14 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:30:25 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/01 12:06:14 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/01 13:26:09 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "printf/ft_printf.h"
 #include <signal.h>
+#include <stdio.h>
 
 void	send_character(char c, pid_t server_pid)
 {
@@ -21,14 +22,13 @@ void	send_character(char c, pid_t server_pid)
 	i = 8;
 	while (--i >= 0)
 	{
-		if (c & (1 << i)) // Check each bit
-			kill(server_pid, SIGUSR1); // Send SIGUSR1 for bit '1'
+		if (c & (1 << i))
+			kill(server_pid, SIGUSR1);
 		else
-			kill(server_pid, SIGUSR2); // Send SIGUSR2 for bit '0'
-		usleep(100); // Delay to avoid sending too quickly
+			kill(server_pid, SIGUSR2);
+		usleep(100);
 	}
-	// Indicate end of message
-	kill(server_pid, SIGUSR2); // Sending SIGUSR2 as a message terminator
+	kill(server_pid, SIGUSR2);
 }
 
 int	main(int argc, char **argv)
@@ -38,13 +38,14 @@ int	main(int argc, char **argv)
 	size_t	temp;
 
 	temp = -1;
+	message = NULL;
 	if (argc != 3)
 	{
-		ft_printf(stderr, "Usage: %s <server_pid> <string>\n", argv[0]);
+		write(1, "Usage: ./client <server_pid> <string>\n", 38);
 		return (1);
 	}
 	server_pid = ft_atoi(argv[1]);
-	*message = argv[2];
+	*message = *argv[2];
 	while (++temp < ft_strlen(message))
 		send_character(message[temp], server_pid);
 	return (0);
