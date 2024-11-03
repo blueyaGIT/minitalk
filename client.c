@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:30:25 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/03 11:42:01 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/03 11:52:12 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 #include "printf/ft_printf.h"
 #include <signal.h>
 #include <stdio.h>
+
+volatile sig_atomic_t	g_see_res = 0;
+
+void	see_res(int sig)
+{
+	(void)sig;
+	g_see_res = 1;
+}
 
 void	send_character(char c, pid_t server_pid)
 {
@@ -30,11 +38,20 @@ void	send_character(char c, pid_t server_pid)
 	}
 }
 
+void	process_while(char *message, pid_t server_pid, size_t i)
+{
+	g_see_res = 0;
+	send_character(message[i], server_pid);
+	while (!g_see_res)
+		pause();
+}
+
 int	main(int argc, char **argv)
 {
-	pid_t	server_pid;
-	char	*message;
-	size_t	i;
+	pid_t				server_pid;
+	char				*message;
+	size_t				i;
+	struct sigaction	sa;
 
 	if (argc != 3)
 	{
@@ -43,12 +60,16 @@ int	main(int argc, char **argv)
 	}
 	server_pid = ft_atoi(argv[1]);
 	message = argv[2];
-	i = 0;
-	while (i < ft_strlen(message))
-	{
-		send_character(message[i], server_pid);
-		i++;
-	}
+	sa.sa_handler = see_res;
+	sa.sa_flags = 0;
+	sigemptyset(&sa.sa_mask);
+	sigaction(SIGUSR1, &sa, NULL);
+	i = -1;
+	while (++i < ft_strlen(message))
+		process_while(message, server_pid, i);
+	g_see_res = 0;
 	send_character('\0', server_pid);
+	while (!g_see_res)
+		pause();
 	return (0);
 }
