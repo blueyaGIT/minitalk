@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 10:53:19 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/01 19:17:51 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/03 11:39:09 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(void)
 	pid = getpid();
 	ft_printf("Server PID: %d\n", pid);
 	sa.sa_handler = handle_signal;
-	sa.sa_flags = 0;
+	sa.sa_flags = SA_RESTART;
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);

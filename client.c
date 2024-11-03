@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:30:25 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/01 19:22:05 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/03 11:42:01 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	send_character(char c, pid_t server_pid)
 			kill(server_pid, SIGUSR2);
 		usleep(100);
 	}
-	kill(server_pid, SIGUSR2);
 }
 
 int	main(int argc, char **argv)
