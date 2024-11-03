@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:30:25 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/03 11:57:49 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/03 11:58:41 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,3 @@ int	main(int argc, char **argv)
 		pause();
 	return (0);
 }
-
-// test
