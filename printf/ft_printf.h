@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:46:18 by dalbano           #+#    #+#             */
-/*   Updated: 2024/10/30 15:16:29 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/03 12:36:35 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strchr(const char *str, int c);
 int		ft_printf(const char *inputstring, ...);
 int		ft_print_str(char *str);
 int		ft_print_nbr(int n);
-int		ft_print_unsigned_nbr(unsigned long n);
+int		ft_print_unbr(unsigned long n);
 int		ft_print_voidptr(unsigned long long ptr);
 int		ft_print_hex_nbr(unsigned int n, int upper, int initlen);
 

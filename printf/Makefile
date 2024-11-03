@@ -4,11 +4,11 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 # List of source files (all in the parent directory 't1')
-SRCS = 	ft_libft_utils.c \
+SRCS = 	ft_utils.c \
 		ft_print_hex_nbr.c \
 		ft_print_nbr.c \
 		ft_print_str.c \
-		ft_print_unsigned_nbr.c \
+		ft_print_unbr.c \
 		ft_print_voidptr.c \
 		ft_printf.c
 

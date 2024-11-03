@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:43:55 by dalbano           #+#    #+#             */
-/*   Updated: 2024/10/30 15:10:43 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/03 12:37:54 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_print_conversion(char conversion, va_list args)
 	else if (conversion == 'd' || conversion == 'i')
 		return (ft_print_nbr(va_arg(args, int)));
 	else if (conversion == 'u')
-		return (ft_print_unsigned_nbr(va_arg(args, unsigned int)));
+		return (ft_print_unbr(va_arg(args, unsigned int)));
 	else if (conversion == 'x')
 		return (ft_print_hex_nbr(va_arg(args, unsigned long long), 0, 0));
 	else if (conversion == 'X')
