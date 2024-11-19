@@ -6,12 +6,11 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 11:30:25 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/03 12:47:23 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/19 11:46:28 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
-#include "printf/ft_printf.h"
 #include <signal.h>
 // #include <stdio.h>
 
