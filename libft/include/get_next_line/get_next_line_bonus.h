@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 14:56:44 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/19 11:51:41 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/27 21:32:24 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+
+# ifndef BUFFER_SIZE_GNL
+#  define BUFFER_SIZE_GNL 32
+# endif
 
 /* ---------- GNL ------------ */
 char	*get_next_line(int fd);
