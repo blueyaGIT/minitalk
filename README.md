@@ -63,7 +63,6 @@ For example:
 
 - `server.c` - Implements the server logic, receiving and processing signals.
 - `client.c` - Implements the client logic, converting messages into signals.
-- `minitalk.h` - Header file containing function prototypes and necessary includes.
 - `Makefile` - Automates the compilation of the project.
 
 ## Signal Handling
