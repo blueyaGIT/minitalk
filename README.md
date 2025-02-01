@@ -1,4 +1,12 @@
-<a href="https://github.com/blueyaGIT/minitalk"><img src="https://github.com/blueyaGIT/blueyaGIT/blob/b34a5a4e10b9019609659eaa0541a4325db88ca5/covers/cover-minitalk-bonus.png"></a>
+<p align="center">
+  <img src="https://github.com/blueyaGIT/blueyaGIT/blob/master/42_badges/minitalkm.png?raw=true" alt="minitalk"/>
+</p>
+
+<p align="center">
+  Score: <i>125/100</i><br>
+  Finished: <i>03.11.2024</i><br>
+</p>
+
 ###
 
 `minitalk` is a project that implements inter-process communication using UNIX signals. It consists of a client and a server program, where the client sends messages to the server using `SIGUSR1` and `SIGUSR2` signals. This project is part of the 42 School curriculum.
