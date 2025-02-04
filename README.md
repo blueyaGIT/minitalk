@@ -99,3 +99,11 @@ make bonus
 - The implementation uses `usleep()` to manage signal timing and avoid data loss.
 
 For more details, refer to the project documentation or the `42` subject PDF.
+
+## 🚀 Next Project
+
+<a href="https://github.com/blueyaGIT/so_long"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=BF94E4&width=435&lines=so_long"></a>
+
+## ⏳ Previous Project
+
+<a href="https://github.com/blueyaGIT/get_next_line"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=BF94E4&width=435&lines=get_next_line"></a>
